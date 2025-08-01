@@ -1,0 +1,18 @@
+{
+    "VCAP_SERVICES": {
+      "hana": [
+        {
+          "name": "kisitakip-db",
+          "label": "hana",
+          "tags": ["hana"],
+          "credentials": {
+            "schema":  "B64450CEB1C3448D95F93745C8BBFB4E",
+            "hdi_user": "B64450CEB1C3448D95F93745C8BBFB4E_CUJHXT1P12MEARR9NWKRHQZQK_DT",           
+            "user":  "B64450CEB1C3448D95F93745C8BBFB4E_CUJHXT1P12MEARR9NWKRHQZQK_RT",
+            "password":  "Lk6o2uprM8KqJB5d.SBk--IKDEw5.avHIOVlz3FAO",
+            "url": "jdbc:sap://<hana_host>:<port>"
+          }
+        }
+      ]
+    }
+  }
