@@ -1,0 +1,280 @@
+<mvc:View
+  controllerName="stajui.project1.controller.Success"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:core="sap.ui.core"
+  height="100%">
+
+<OverflowToolbar id="_IDGenOverflowToolbar1">
+  <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+  <Select
+    id="themeSelector"
+    change=".onThemeChange"
+    selectedKey="sap_fiori_3">
+    <items>
+      <core:Item id="_IDGenItem" key="sap_fiori_3" text="Açık Tema" />
+      <core:Item id="_IDGenItem1" key="sap_fiori_3_dark" text="Karanlık Tema" />
+      <core:Item id="_IDGenItem2" key="sap_belize" text="Klasik Mavi" />
+    </items>
+  </Select>
+</OverflowToolbar>
+
+  <VBox id="pageContainer" height="100%" class="backgroundContainer">
+
+    <Image id="_IDGenImage2"
+      src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg"
+      class="backgroundLogo"
+      decorative="true" />
+
+    <ScrollContainer
+      id="scrollContainer"
+      vertical="true"
+      horizontal="false"
+      height="100%"
+      width="100%"
+      focusable="true">
+
+      <VBox id="_IDGenVBox" class="sapUiSmallMargin">
+
+        <VBox id="_IDGenVBox12" class="sapUiSmallMarginTop sapUiSmallMarginBottom" justifyContent="Center" alignItems="Center">
+          <Image id="_IDGenImage12"
+            src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg"
+            width="150px"
+            alt="SAP Logo" />
+        </VBox>
+
+        <!-- Arama Paneli -->
+       <Panel id="_IDGenPanel" headerText="Search " expandable="true" expanded="true" class="sapUiSmallMargin sapUiResponsiveMargin">
+  <Input
+    id="searchField"
+    placeholder="Ara..."
+    liveChange="onSearch"
+    width="200px" />
+</Panel>
+
+<!-- Yeni Kayıt Paneli -->
+<Panel id="_IDGenPanel1" headerText="New registration" expandable="true" expanded="true" class="sapUiSmallMargin sapUiResponsiveMargin yeniKayitPanel">
+  <VBox id="IDGenVBoxAddForm" alignItems="Start">
+    <HBox id="_IDGenHBox1" class="sapUiTinyMarginBottom">
+      <Input id="inputID" placeholder="ID" width="150px" />
+    </HBox>
+    <HBox id="_IDGenHBox2" class="sapUiTinyMarginBottom">
+      <Input id="inputName" placeholder="Ad Soyad" width="200px" />
+    </HBox>
+    <HBox id="_IDGenHBox3" class="sapUiTinyMarginBottom">
+      <DatePicker id="inputBirthday" placeholder="Doğum Tarihi" width="200px" />
+    </HBox>
+    <HBox id="_IDGenHBox4" class="sapUiTinyMarginBottom">
+      <Input id="inputAvatar" placeholder="Avatar URL" width="300px" />
+    </HBox>
+    <HBox id="_IDGenHBoxCity" class="sapUiTinyMarginBottom">
+      <Input id="inputCity" placeholder="Şehir" width="200px" />
+    </HBox>
+<!-- Pozisyon -->
+<HBox id="_IDGenHBoxPosition" class="sapUiTinyMarginBottom">
+  <Input id="inputPosition" placeholder="Pozisyon" width="200px" />
+</HBox>
+
+<!-- İşe Başlama Tarihi -->
+<HBox id="_IDGenHBoxHireDate" class="sapUiTinyMarginBottom">
+  <DatePicker id="inputHireDate" placeholder="İşe Başlama Tarihi" width="200px" />
+</HBox>
+
+
+
+
+    <HBox id="_IDGenHBox5" class="sapUiTinyMarginTop">
+      <Button id="IDGenButtonAddUser" text="Add" type="Emphasized" press=".onAdd" />
+    </HBox>
+  </VBox>
+</Panel>
+
+<Panel id="_IDGenPanel2" headerText="Registered persons" expandable="true" expanded="true" class="sapUiSmallMargin sapUiResponsiveMargin tabloPanel">
+  <Table id="_IDGenTable" items="{editModel>/items}" inset="false">
+    <columns>
+      <Column id="_IDGenColumn4"><Text id="_IDGenText4" text="ID"/></Column>
+      <Column id="_IDGenColumn5"><Text id="_IDGenText5" text="Avatar"/></Column>
+      <Column id="_IDGenColumn6"><Text id="_IDGenText9" text="Name"/></Column>
+      <Column id="_IDGenColumn11">
+  <Text id="_IDGenText16" text="Position" />
+</Column>
+<Column id="_IDGenColumn12">
+  <Text id="_IDGenText17" text="Hire Date" />
+</Column>
+     <Column id="_IDGenColumn21"><Text id="_IDGenText36" text="Termination Date" /></Column>
+
+   <Column id="_IDGenColumn34"><Text id="_IDGenTextCityHeader" text="City"/></Column>
+  <Column id="_IDGenColumn7"><Text id="_IDGenText10" text="Birthday"/></Column>
+     
+      <Column id="_IDGenColumn8">
+        <HBox id="_IDGenHBox6">
+          <Text id="_IDGenText11" text="Age" />
+          <Button id="_IDGenButton1" icon="sap-icon://sort" press="onSortAge" type="Transparent" tooltip="Age Sırala" />
+        </HBox>
+      </Column>
+    <Column id="_IDGenColumn9" hAlign="Center" width="250px">
+  <Text id="_IDGenText12" text="Actions" />
+</Column>
+      <Column id="_IDGenColumn10" />
+    </columns>
+    <items>
+      <ColumnListItem 
+      
+      id="_IDGenColumnListItem1">
+      
+        <cells>
+          <Text id="_IDGenText13" text="{editModel>ID}" />
+          <Image id="_IDGenImage1" src="{editModel>Avatar}" width="40px" height="40px" />
+          <Text id="_IDGenText14" text="{editModel>Name}" />
+           <Text id="_IDGenText18" text="{editModel>Position}" />
+<Text id="_IDGenText19" text="{editModel>HireDate}" />
+<Text id="_IDGenText39" text="{editModel>TerminationDate}" />
+ <Text id="_IDGenTextCityCell" text="{editModel>City}" />
+          <DateTimePicker id="_IDGenDateTimePicker"
+            value="{editModel>Birthday}"
+            width="7rem"
+            displayFormat="yyyy-MM-dd HH:mm"
+            valueFormat="yyyy-MM-dd'T'HH:mm:ss"
+            change="onBirthdayChange" />
+     
+          <Text id="_IDGenText15" text="{editModel>Age}" />
+        <HBox id="_IDGenHBox7">
+  <Button id="_IDGenButton2" text="Delete" press="onDelete" type="Reject" icon="sap-icon://delete"/>
+ 
+  <Button id="_IDGenButton8"
+        text="İşten Çıkar"
+        type="Reject"
+        press=".onFireTerminate"
+      />
+ <Button id="_IDGenButton3" text="Update" press="onUpdate" type="Accept" visible="{= ${editModel>_dirty} === true }"/>
+
+
+    </HBox>
+
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+</Panel>
+
+
+<Panel
+  id="_IDGenPanel5"
+  headerText="Statistics"
+  expandable="true"
+  expanded="false"
+  expand=".onStatsPanelExpand"
+  class="sapUiSmallMarginTop">
+  <VBox id="_IDGenVBox3" alignItems="Center" class="noGap">
+    <core:HTML id="ageChartContainer"
+      content="&lt;canvas id='ageChart' style='width:100%; max-width:500px; height:auto;'&gt;&lt;/canvas&gt;" />
+    <core:HTML id="genderChartContainer"
+      content="&lt;canvas id='genderChart' style='width:100%; max-width:400px; height:auto;'&gt;&lt;/canvas&gt;" />
+    <core:HTML id="birthYearChartContainer"
+      content="&lt;canvas id='birthYearChart' style='width:100%; max-width:500px; height:auto;'&gt;&lt;/canvas&gt;" />
+
+      <core:HTML id="_IDGenHTML" content="&lt;canvas id='cityChart' width='400' height='200'&gt;&lt;/canvas&gt;" />
+
+      <core:HTML id="_IDGenHTML1" content="&lt;canvas id='positionChart' style='width:100%; max-width:500px'&gt;&lt;/canvas&gt;" />
+<core:HTML id="_IDGenHTML2" content="&lt;canvas id='hireYearChart' style='width:100%; max-width:500px'&gt;&lt;/canvas&gt;" />
+
+  </VBox>
+</Panel>
+<Panel id="_IDGenPanel6"
+  headerText="Leave Records"
+  expandable="true"
+  expanded="false"
+  class="sapUiResponsiveMargin sapUiSmallMarginTop">
+
+  <VBox id="_IDGenVBox4" class="sapUiSmallMargin">
+
+    <!-- Form -->
+    <Label id="_IDGenLabel0" text="ID" />
+    <Input id="inputAbsenceID" value="{absenceModel>/ID}" />
+
+    <Label id="_IDGenLabel1" text="Ad Soyad" />
+    <Input id="inputAbsenceName" value="{absenceModel>/Name}" />
+
+    <Label id="_IDGenLabel2" text="Başlangıç Tarihi" />
+    <DatePicker id="inputAbsenceStart" value="{absenceModel>/StartDate}" displayFormat="yyyy-MM-dd" />
+
+    <Label id="_IDGenLabel" text="Bitiş Tarihi" />
+    <DatePicker id="inputAbsenceEnd" value="{absenceModel>/EndDate}" displayFormat="yyyy-MM-dd" />
+
+    <Label id="_IDGenLabel3" text="İzin Tipi" />
+    <Select id="inputAbsenceType" selectedKey="{absenceModel>/Type}">
+      <items>
+        <core:Item id="_IDGenItem3" key="Yıllık" text="Yıllık İzin" />
+        <core:Item id="_IDGenItem4" key="Mazeret" text="Mazeret İzni" />
+        <core:Item id="_IDGenItem5" key="Sağlık" text="Sağlık İzni" />
+        <core:Item id="_IDGenItem6" key="Doğum" text="Doğum İzni" />
+        <core:Item id="_IDGenItem7" key="Babalık" text="Babalık İzni" />
+        <core:Item id="_IDGenItem8" key="Evlilik" text="Evlilik İzni" />
+        <core:Item id="_IDGenItem9" key="Ölüm" text="Vefat (Ölüm) İzni" />
+        <core:Item id="_IDGenItem10" key="Ücretsiz" text="Ücretsiz İzin" />
+      </items>
+    </Select>
+
+    <Button id="_IDGenButton4" text="İzin Ekle" press=".onAddAbsence" class="sapUiSmallMarginTop" />
+  </VBox>
+
+  <!-- Tablo -->
+  <Table id="absenceTable" items="{/Absences}" class="sapUiSmallMarginTop">
+    <columns>
+      <Column id="_IDGenColumn55"><Text id="_IDGenText33" text="ID" /></Column>
+      <Column id="_IDGenColumn15"><Text id="_IDGenText26" text="Ad Soyad" /></Column>
+      <Column id="_IDGenColumn16"><Text id="_IDGenText27" text="Başlangıç" /></Column>
+      <Column id="_IDGenColumn17"><Text id="_IDGenText28" text="Bitiş" /></Column>
+      <Column id="_IDGenColumn18"><Text id="_IDGenText29" text="Tip" /></Column>
+      <Column id="_IDGenColumn19"><Text id="_IDGenText34" text="İşlem" /></Column>
+    </columns>
+    <items>
+      <ColumnListItem id="_IDGenColumnListItem2">
+        <cells>
+        <Text id="IDGenText34" text="{path: 'ID', targetType: 'any'}" />
+          <Text id="_IDGenText30" text="{Name}" />
+          <Text id="_IDGenText25" text="{StartDate}" />
+          <Text id="_IDGenText31" text="{EndDate}" />
+          <Text id="_IDGenText24" text="{Type}" />
+          <Button id="_IDGenButton7" text="Sil" type="Reject" press=".onDeleteAbsence" />
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
+</Panel>
+
+<Button
+class="backFixedButton" 
+id="gobutton"
+ text="Üçüncü Sayfaya Git" press="onToView3"/>
+
+
+<Button
+  id="excelExportBtn"
+  text="Excel'de Aç"
+  icon="
+  "
+  press="onExportToExcel"
+  class="exportButton"
+/>
+
+
+
+
+<Button
+  id="backButton"
+  text="Geri Dön"
+  icon="sap-icon://nav-back"
+  press=".onBack"
+  class="backFixedButton" />
+
+
+
+
+
+
+
+      </VBox>
+    </ScrollContainer>
+  </VBox>
+</mvc:View>

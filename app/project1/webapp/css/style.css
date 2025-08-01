@@ -1,0 +1,54 @@
+/* Enter your custom styles here */
+
+.backgroundContainer {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.95);
+    overflow: hidden;
+  }
+  
+  .backgroundLogo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.35;
+    width: 600px;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  /* 🎯 Tüm Panelde değil, sadece iç gövdesinde saydamlık! */
+  .yeniKayitPanel .sapMPanelContent {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  /* Başlık kısmını daha net yapalım */
+  .yeniKayitPanel .sapMPanelHdr {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .exportButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  .backFixedButton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+  }
+  .noGap > * {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  .terminated {
+    background-color: #ffe6e6 !important;
+    text-decoration: line-through;
+    opacity: 0.6;
+}

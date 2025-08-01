@@ -1,0 +1,1 @@
+using PersonService as service from '../../srv/service';

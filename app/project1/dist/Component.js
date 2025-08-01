@@ -1,0 +1,2 @@
+sap.ui.define(["sap/ui/core/UIComponent","stajui/project1/model/models","sap/ui/model/odata/v4/ODataModel"],function(e,t,i){"use strict";return e.extend("stajui.project1.Component",{metadata:{manifest:"json",interfaces:["sap.ui.core.IAsyncContentCreation"]},init:function(){e.prototype.init.apply(this,arguments);this.setModel(t.createDeviceModel(),"device");const o=new i({serviceUrl:"/odata/v4/People/"});this.setModel(o);this.getRouter().initialize()}})});
+//# sourceMappingURL=Component.js.map

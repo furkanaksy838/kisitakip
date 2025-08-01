@@ -1,0 +1,115 @@
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:unified="sap.ui.unified"
+  controllerName="stajui.project1.controller.View1">
+
+  <Page id="_IDGenPage" showHeader="false" class="sapUiContentPadding">
+
+    
+    <VBox id="_IDGenVBox1" alignItems="Center" class="sapUiSmallMarginBottom">
+      <Image id="_IDGenImage"
+        src="https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg"
+        width="150px"
+        alt="SAP Logo" />
+    </VBox>
+
+    
+    <Panel id="_IDGenPanel3"
+      headerText="CSV Dosyası Yükleme"
+      class="sapUiResponsiveMargin"
+      width="100%">
+      
+      <VBox id="_IDGenVBox2" alignItems="Start" class="sapUiSmallMargin">
+        <unified:FileUploader
+          id="fileUploader"
+          name="csvFile"
+          change=".onFileSelected"
+          width="300px"
+          uploadOnChange="false"
+          useMultipart="false"
+          sameFilenameAllowed="true"
+          buttonText="Dosya Seç" />
+
+        <Input
+          id="filePath"
+          width="300px"
+          editable="false"
+          placeholder="Seçilen dosya"
+          class="sapUiSizeCompact sapUiTinyMarginTop" />
+
+        <HBox id="_IDGenHBox" class="sapUiSmallMarginTop">
+          <Button id="_IDGenButton" text="Yükle" press=".onUpload" type="Emphasized" class="sapUiTinyMarginEnd" />
+          <Button id="_IDGenButton5" text="İptal" press=".onCancel" type="Reject" />
+        </HBox>
+      </VBox>
+    </Panel>
+
+  
+    <Panel id="_IDGenPanel4"
+      headerText="Önizleme"
+      class="sapUiResponsiveMargin sapUiSmallMarginTop"
+      visible="{= ${documents>/items}.length > 0 }"
+      width="100%">
+
+      <Table
+        id="previewTable"
+        items="{documents>/items}"
+        inset="false">
+        <columns>
+        
+          <Column id="_IDGenColumn"><Text id="_IDGenText" text="ID" /></Column>
+          <Column id="_IDGenColumn1"><Text id="_IDGenText1" text="Avatar" /></Column>
+          <Column id="_IDGenColumn2"><Text id="_IDGenText2" text="Name" /></Column>
+          <Column id="_IDGenColumn13">
+  <Text id="_IDGenText20" text="Position" />
+</Column>
+<Column id="_IDGenColumn14">
+  <Text id="_IDGenText21" text="HireDate" />
+</Column>
+<Column id="_IDGenColumn20">
+  <Text id="_IDGenText35" text="City"/>
+</Column>
+
+          <Column id="_IDGenColumn3"><Text id="_IDGenText3" text="TerminationDate" /></Column>
+          <Column id="_IDGenColumnCity"><Text id="_IDGenText32" text="Birthday" /></Column>
+
+
+
+        </columns>
+        <items>
+       <ColumnListItem
+  id="_IDGenColumnListItem"
+  highlight="{= ${documents>Status} === 'Pasif' ? 'Error' : 'None' }">
+           <cells>
+        <Text id="_IDGenText6" text="{documents>ID}" />
+        <Image id="_IDGenImage3" src="{documents>Avatar}" width="40px" height="40px"/>
+        <Text id="_IDGenText7" text="{documents>Name}" />
+        <Text id="_IDGenText8" text="{documents>Position}" />
+        <Text id="_IDGenText22" text="{documents>HireDate}" />
+          <Text id="_IDGenText38" text="{documents>City}" /> <!-- Yeni -->
+        
+           <Text id="_IDGenText37" text="{documents>TerminationDate}" />
+        <Text id="_IDGenText23" text="{documents>Birthday}" />
+   
+        
+      </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+
+      <OverflowToolbar id="_IDGenOverflowToolbar" class="sapUiTinyMarginTop" width="100%">
+        <ToolbarSpacer id="_IDGenToolbarSpacer" />
+        <Button id="_IDGenButton6"
+          icon="sap-icon://upload"
+          text="Import"
+          type="Emphasized"
+          press=".onImport"
+          tooltip="Veriyi HANA'ya kaydet" />
+      </OverflowToolbar>
+    </Panel>
+
+  </Page>
+</mvc:View>
+
+

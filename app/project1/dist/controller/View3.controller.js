@@ -1,0 +1,2 @@
+sap.ui.define(["sap/m/MessageToast","sap/ui/core/mvc/Controller"],function(e,s){"use strict";var t=s.extend("sap.m.sample.Button.Page",{onPress:function(s){e.show(s.getSource().getId()+" Pressed")}});return t});
+//# sourceMappingURL=View3.controller.js.map

@@ -1,0 +1,98 @@
+_schema-version: 3.3.0
+ID: kisitakip
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+  deploy_mode: html5-repo
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+  - name: kisitakip-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      instances: 1
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: kisitakip-db
+
+  - name: kisitakip-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: kisitakip-db
+
+  - name: kisitakip-app-deployer
+    type: com.sap.application.content
+    path: gen
+    requires:
+      - name: kisitakip-html5-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: app/
+      requires:
+        - name: kisitakipproject1
+          artifacts:
+            - project1.zip
+          target-path: app/
+
+  - name: kisitakipproject1
+    type: html5
+    path: app/project1
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build
+      supported-platforms:
+        []
+
+  - name: kisitakip-portal-deployer
+    type: com.sap.application.content
+    path: app/portal
+    requires:
+      - name: kisitakip-portal
+        parameters:
+          content-target: true
+          service-key:
+            name: kisitakip-portal-key
+            config:
+              content-endpoint: developer
+      - name: kisitakip-auth
+      - name: kisitakip-html5-repo-host
+      - name: kisitakip-app-deployer
+    deployed-after:
+      - kisitakip-app-deployer
+
+resources:
+  - name: kisitakip-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+
+  - name: kisitakip-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+  - name: kisitakip-portal
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: portal
+      service-plan: standard
