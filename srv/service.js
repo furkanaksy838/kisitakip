@@ -4,7 +4,7 @@ const path = require("path");
 
 module.exports = srv => {
 
-  // Yaş hesaplama
+  // Yaş 
   srv.before("CREATE", "People", req => {
     const birthday = req.data.Birthday;
     if (birthday) {
